@@ -2,7 +2,9 @@
 import { Request,Response } from "express";
 import User from "../Database/models/userModel";
 import bcrypt from 'bcrypt'
-
+import generateToken from "../services/generateToken";
+import generateOtp from "../services/otpGenerate";
+import sendMail from "../services/mailSender";
 class UserController{
     public static async register(req:Request,res:Response){
         const {username,email,password} = req.body;
@@ -77,10 +79,70 @@ class UserController{
                 message : "Invalid Password,please try again"
             })
         }
+        const token = generateToken(user.id);
+
         res.status(200).json({
-            message : "Login success"
+            message : "Login success",
+            token : token
         })
     } 
+
+    public static async fetchUser(req:Request,res:Response){
+        const [user] = await User.findAll({
+            attributes : ['id','username','email']
+        })
+        if(!user){
+            res.status(403).json({
+                message : "Please check your login status"
+            })
+            return;
+        }
+        res.status(200).json({
+            message : "user is fetch successfully",
+            data : user
+        })
+        
+    }
+
+    public static async handleForgotPassword(req:Request,res:Response){
+        const {email} = req.body;
+        if(!email){
+            res.status(400).json({
+                message : "please provide email"
+            })
+            return;
+        }
+        const [user] = await User.findAll({
+            where:
+            {
+                email : email
+            }
+        });
+        if(!user){
+            res.status(404).json({
+                message : "invalid email"
+            })
+            return;
+        }
+
+        const otp = generateOtp()
+        try {
+            await sendMail({
+                to:email,
+                subject:"Digital Dokan Password Reset",
+                text : `you just request to change reset password.here is you otp, ${otp}`
+            })
+        } catch (error) {
+            console.log(error)
+            
+        }
+
+        res.status(200).json({
+            message : "otp is pathae deko cha"
+        })
+
+
+    }
 }
 
 export default UserController;
