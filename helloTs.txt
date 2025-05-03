@@ -1,2 +1,4 @@
 To setup TS:
 npx tsc --init
+
+--> for decorator issue,we have to uncomment decorator 2 files from tsconfig.json
