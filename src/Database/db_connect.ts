@@ -1,6 +1,12 @@
 import { Sequelize } from "sequelize-typescript";
 import { envConfig } from "../config/config";
-const sequelize = new Sequelize(envConfig.db_uri as string);
+import User from "./models/userModel";
+const sequelize = new Sequelize(envConfig.db_uri as string,
+    {
+        dialect : 'postgres',
+        models : [User]
+    }
+);
 
 try {
     sequelize.authenticate().then(()=>{
@@ -13,5 +19,9 @@ try {
 } catch (error) {
     console.log(error);    
 }
+
+ sequelize.sync({force: false,alter:false}).then(()=>{
+    console.log("synced!!");
+ })
 
 export default sequelize;
