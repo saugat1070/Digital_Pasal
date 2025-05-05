@@ -1,10 +1,12 @@
 import { Sequelize } from "sequelize-typescript";
 import { envConfig } from "../config/config";
 import User from "./models/userModel";
+import Product from "./models/productModel";
+import Category from "./models/categoryModel";
 const sequelize = new Sequelize(envConfig.db_uri as string,
     {
         dialect : 'postgres',
-        models : [User]
+        models : [User,Product,Category]
     }
 );
 
