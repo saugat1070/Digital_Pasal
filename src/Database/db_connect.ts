@@ -26,4 +26,10 @@ try {
     console.log("synced!!");
  })
 
+ //relationships //
+ Product.belongsTo(Category)
+ Category.hasOne(Product)
+// Category.belongsTo(Product) -> yesma Catgory table maa product id link huncha
+// Product.hasOne(Category)
+
 export default sequelize;
