@@ -42,6 +42,11 @@ class Product extends Model{
     })
     declare productDiscount : number
 
+    @Column({
+        type: DataType.STRING
+    })
+    declare imageUrl : string
+
 
 
 
