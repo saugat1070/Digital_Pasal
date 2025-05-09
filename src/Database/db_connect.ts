@@ -27,8 +27,8 @@ try {
  })
 
  //relationships //
- Product.belongsTo(Category)
- Category.hasOne(Product)
+ Product.belongsTo(Category,{foreignKey:'categoryId'})
+ Category.hasOne(Product,{foreignKey:'categoryId'})
 // Category.belongsTo(Product) -> yesma Catgory table maa product id link huncha
 // Product.hasOne(Category)
 
