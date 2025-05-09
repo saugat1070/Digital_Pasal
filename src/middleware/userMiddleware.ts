@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken"
 import { envConfig } from '../config/config';
 import User from '../Database/models/userModel';
 
-enum Role{
+export enum Role{
     Admin = "admin",
     Customer = "customer"
 }
