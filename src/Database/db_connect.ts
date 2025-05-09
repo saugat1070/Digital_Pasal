@@ -3,10 +3,12 @@ import { envConfig } from "../config/config";
 import User from "./models/userModel";
 import Product from "./models/productModel";
 import Category from "./models/categoryModel";
+import Order from "./models/orderModel";
+import Payment from "./models/paymentModel";
 const sequelize = new Sequelize(envConfig.db_uri as string,
     {
         dialect : 'postgres',
-        models : [User,Product,Category]
+        models : [User,Product,Category,Order,Payment]
     }
 );
 
@@ -22,7 +24,7 @@ try {
     console.log(error);    
 }
 
- sequelize.sync({force: false,alter:false}).then(()=>{
+ sequelize.sync({force: false,alter:true}).then(()=>{
     console.log("synced!!");
  })
 
