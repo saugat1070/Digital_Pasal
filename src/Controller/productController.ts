@@ -9,41 +9,50 @@ import Category from "../Database/models/categoryModel";
 // }
 class ProductController {
     static async createProduct(req: Request, res: Response): Promise<void> {
+        console.log(req.body);
+        let filename : string | null = null;
         const { productName, productDescription,
-            productPrice, productTotalStock, discount, categoryId
-        } = req.body
-        const filename = req.file ? req.file.filename : "imagelinkhere"
+            productPrice, productQuantity, productDiscount, categoryId
+        } = req.body;
+        filename = req.file ? req.file.filename as string : "https:something.com";
+        
         if (!productName || !productDescription || !productPrice
-            || !productTotalStock || !categoryId
+            || !productQuantity || !categoryId
         ) {
             res.status(400).json({
-                message: "please provide productName,productDescription,productPrice,productTotalStock,discount "
-            })
+                message: "please provide productName, productDescription, productPrice, productQunatity, discount"
+            });
             return;
         }
 
-        await Product.create({
-            where: {
-                productName,
-                productDescription,
-                productPrice,
-                productTotalStock,
-                discount: discount || 0,
-                categoryId
+        try {
+            await Product.create({
+                productName: productName,
+                productDescription: productDescription,
+                productPrice: productPrice,
+                productQuantity: productQuantity,
+                productDiscount: productDiscount || 0,
+                categoryId: categoryId,
+                imageUrl: filename
+            });
 
-            }
-        })
-
-        res.status(200).json({
-            message: "Product created Successfully"
-        })
+            res.status(200).json({
+                message: "Product created Successfully"
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({
+                message: "An error occurred while creating the product"
+            });
+        }
     }
 
-    static async GetAllProduct(req: Product, res: Response) {
+    static async getAllProduct(req: Request, res: Response) {
         const datas = await Product.findAll({
             include: [
                 {
                     model: Category,
+                    
                 }
             ]
         })
@@ -55,7 +64,8 @@ class ProductController {
         }
 
         res.status(200).json({
-            message: "Data fetch succussfully"
+            message: "Data fetch succussfully",
+            data : datas
         })
 
     }
@@ -139,18 +149,18 @@ class ProductController {
 
     static async UpdateProduct(req: Request, res: Response) {
         const { id } = req.params
-        if(req.file){
-            const newProduct = req.file.filename 
+        if (req.file) {
+            const newProduct = req.file.filename
             const product = await Product.findByPk(id);
         }
         const { productName, productDescription,
-            productPrice, productTotalStock, discount, categoryId } = req.body
+            productPrice, productQuantity, discount, categoryId } = req.body
 
         await Product.update({
             productName,
             productDescription,
             productPrice,
-            productTotalStock,
+            productQuantity,
             discount,
             categoryId
         }, {
@@ -160,3 +170,5 @@ class ProductController {
         })
     }
 }
+
+export { ProductController }
