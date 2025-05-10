@@ -1,6 +1,7 @@
 import { Table,Column,DataType,Model, PrimaryKey, AllowNull } from "sequelize-typescript";
 
 
+
 @Table({
     tableName: 'orderDetails',
     modelName : 'orderDetails',
@@ -20,5 +21,7 @@ class OrderDetails extends Model{
         allowNull: false
     })
     declare quantity:number
-    
+
 }
+
+export default OrderDetails
