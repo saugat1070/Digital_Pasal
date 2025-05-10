@@ -1,3 +1,5 @@
+import { Request } from "express"
+
 export enum orderStatus{
     pending = "pending",
     cancelled = "cencelled",
@@ -6,13 +8,25 @@ export enum orderStatus{
     preparation = "preparation"
 }
 
-export enum paymentMethod{
+export enum PaymentMethod{
     khalti = "khalti",
     esewa = "esewa",
-    COD = "COD"
+    COD = "cod"
 }
 
 export enum paymentStatus{
     paid = "paid",
     unpaid = "unpaid"
+}
+
+export interface IExtendedRequest extends Request{
+    user? : {
+        username : string,
+        email : string,
+        role : string,
+        password : string,
+        id : string
+
+    }
+
 }
