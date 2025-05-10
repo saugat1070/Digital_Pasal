@@ -10,6 +10,7 @@ import Category from "../Database/models/categoryModel";
 class ProductController {
     static async createProduct(req: Request, res: Response): Promise<void> {
         console.log(req.body);
+        console.log(req.file)
         let filename : string | null = null;
         const { productName, productDescription,
             productPrice, productQuantity, productDiscount, categoryId
@@ -91,6 +92,7 @@ class ProductController {
             include: [
                 {
                     model: Category,
+                    attributes : ['id','categoryName']
 
                 }
             ]
