@@ -14,7 +14,7 @@ export enum PaymentMethod{
     COD = "cod"
 }
 
-export enum paymentStatus{
+export enum PaymentStatus{
     paid = "paid",
     unpaid = "unpaid"
 }
