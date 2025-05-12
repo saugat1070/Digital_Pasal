@@ -1,5 +1,5 @@
 import { Table,Column,DataType,Model, AllowNull } from "sequelize-typescript";
-import { PaymentMethod, paymentStatus } from "../../globals/types";
+import { PaymentMethod, PaymentStatus } from "../../globals/types";
 @Table({
     tableName:"paymentDetails",
     modelName: "Payment",
@@ -26,11 +26,11 @@ class Payment extends Model{
     declare paymentMethod : string
 
     @Column({
-        type: DataType.ENUM(paymentStatus.paid,paymentStatus.unpaid),
+        type: DataType.ENUM(PaymentStatus.paid,PaymentStatus.unpaid),
         allowNull : false,
-        defaultValue : paymentStatus.unpaid
+        defaultValue : PaymentStatus.unpaid
     })
-    declare payMethod : string
+    declare paymentStatus : string
 
     @Column({
         type:DataType.STRING
