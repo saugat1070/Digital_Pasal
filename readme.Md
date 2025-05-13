@@ -33,6 +33,9 @@
 - **Clean Project Structure**  
   Well-organized directories for controllers, models, routes, middleware, and services to maintain scalability and readability.
 
+- **Payment Integration**
+Integrate payment gateway services such as Esewa and khalti
+
 ---
 
 ## 📁 Project Structure
@@ -101,7 +104,7 @@ server/
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/digital-dokan.git
+git clone https://github.com/saugat1070/digital-dokan.git
 cd digital-dokan
 
 # Install dependencies
