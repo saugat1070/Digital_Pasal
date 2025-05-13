@@ -43,7 +43,7 @@ Integrate payment gateway services such as Esewa and khalti
 server/
 ├── node_modules/               # Project dependencies
 ├── src/                        # Source files
-│   ├── config/                 # Configuration files (if present)
+│   ├── config/                 # Configuration files 
 │   ├── Controller/             # Controllers handling business logic
 │   │   ├── cartController.ts
 │   │   ├── categoryController.ts
@@ -83,8 +83,7 @@ server/
 │   └── app.ts                  # App initialization
 ├── .env                        # Environment variables
 ├── .gitignore                  # Git ignore rules
-├── adminSeeder.ts             # Admin seeding script
-├── helloTs.txt                # (Possibly test or demo file)
+├── adminSeeder.ts             # Admin seeding script               
 ├── package.json               # Project metadata and scripts
 ├── package-lock.json          # Locked versions of dependencies
 ├── server.ts                  # Server entry point
@@ -115,5 +114,5 @@ cp .env.example .env
 # Edit the .env file with your DB credentials and JWT secret
 
 # Run the development server
-npm run dev
+npm start
 ```
