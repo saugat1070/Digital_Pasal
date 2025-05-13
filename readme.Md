@@ -4,39 +4,39 @@
 
 ---
 
-## ✨ Features
+##  Features
 
-- 🧑‍💼 **User & Admin Management**  
+-  **User & Admin Management**  
   Secure authentication and role-based access control using middleware and token generation.
 
-- 📦 **Product & Category Management**  
+-  **Product & Category Management**  
   Modular controllers and routes handle CRUD operations for products and categories.
 
-- 🛒 **Cart & Order Processing**  
+-  **Cart & Order Processing**  
   Add to cart, view cart, checkout, and track order details using PostgreSQL-backed models.
 
-- 💳 **JWT-Based Security**  
+-  **JWT-Based Security**  
   JSON Web Token (JWT) implementation for user session and route protection.
 
-- 📤 **File Uploads**  
+- **File Uploads**  
   Image and file handling via `multer` middleware.
 
-- 📧 **Email Notifications**  
+- **Email Notifications**  
   Integrated `mailSender` service for sending registration, order, or OTP notifications.
 
-- 🧠 **Error Handling Middleware**  
+- **Error Handling Middleware**  
   Centralized `errorHandler.ts` ensures consistent error logging and response formatting across the app.
 
-- 🗃️ **PostgreSQL Database Integration**  
+- **PostgreSQL Database Integration**  
   Efficient data storage and relational querying using PostgreSQL, configured in `db_connect.ts`.
 
-- 📁 **Clean Project Structure**  
+- **Clean Project Structure**  
   Well-organized directories for controllers, models, routes, middleware, and services to maintain scalability and readability.
 
 ---
 
 ## 📁 Project Structure
-
+```
 server/
 ├── node_modules/               # Project dependencies
 ├── src/                        # Source files
@@ -86,7 +86,7 @@ server/
 ├── package-lock.json          # Locked versions of dependencies
 ├── server.ts                  # Server entry point
 └── tsconfig.json              # TypeScript configuration
-
+```
 ---
 
 ## 🚀 Getting Started
