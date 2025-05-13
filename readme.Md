@@ -103,7 +103,7 @@ server/
 
 ```bash
 # Clone the repository
-git clone https://github.com/saugat1070/digital-dokan.git
+git clone https://github.com/saugat1070/Digital_Pasal.git
 cd digital-dokan
 
 # Install dependencies
